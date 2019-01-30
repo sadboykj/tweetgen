@@ -17,7 +17,7 @@ def reverse_words(*args):
         c-=1
     return " ".join(word_list)
 
-def reverse_sentences():
+def reverse_sentences(*args):
     sentence_list = []
     c = len(args) - 1
     while c > 0:
@@ -25,3 +25,4 @@ def reverse_sentences():
     return sentence_list
 
 if __name__ == '__main__':
+    print()

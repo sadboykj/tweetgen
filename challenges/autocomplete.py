@@ -2,8 +2,6 @@
 
 import sys
 
-gamestop = False
-
 def load(text):
     """
     Loads words from dictionary
