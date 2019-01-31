@@ -11,14 +11,15 @@ def load(text):
     # wordList = [line.strip() for line in open('/usr/share/dict/words')]
 
     file  = open(text, 'r')
-    words = file.readlines()
-    words2 = [word.strip() for word in words]
+    loads = file.readlines()
+    words = [word.strip() for word in loads]
     # equivalent to:
     # words2 = []
     # for word in words:
     #     words2.append(word.strip())
+
     file.close()
-    return words2
+    return words
 
 def anagram(word, text):
     """
@@ -53,7 +54,6 @@ def game():
         sys.exit(1)
 
     loads    = load("/usr/share/dict/words")
-    # print(loads[:10])
     anagrams = anagram(str(word), loads)
     found    = print("{} anagrams were found".format(len(anagrams)))
     results  = print(anagrams)
@@ -67,6 +67,7 @@ def game():
 
 if __name__ == '__main__':
     game()
+    
     # anagrams = ["".join(perm) for perm in itertools.permutations("blue")]
     # print(len(anagrams))
     # print(anagrams[0])
