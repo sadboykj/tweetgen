@@ -45,10 +45,11 @@ def histogram(text):
 
     histogram = {}
 
-    # Takes a source text argument
+    # Loads a source text argument
+    # Creates list of words
     words = load(text)
 
-    # stores each unique word
+    # stores each unique word in histogram
     for word in words:
         if word in histogram:
             histogram[word] += 1
@@ -72,6 +73,23 @@ def unique_words(histogram):
     # Takes a histogram argument
     # Returns total count of unique words
     return len(histogram)
+
+def frequency(word, histogram):
+    """
+    - Takes a word and histogram argument
+    - Returns the number of times word appears in text
+    """
+
+    # Checks if word is in histogram
+    if word in histogram:
+        # Returns dictionary value
+        return histogram[word]
+    else:
+        return "Word not found"
+
+
+
+
 
     # for w in wl:
     #     count = 0
