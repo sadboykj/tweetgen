@@ -63,6 +63,15 @@ def histogram(text):
     # Returns a histogram dictionary data structure
     return histogram
 
+def unique_words(histogram):
+    """
+    - Takes a histogram argument
+    - Returns total count (integer) of unique words
+    """
+
+    # Takes a histogram argument
+    # Returns total count of unique words
+    return len(histogram)
 
     # for w in wl:
     #     count = 0
