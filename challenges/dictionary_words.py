@@ -84,7 +84,7 @@ def compare() :
         #     print('seconds')
         else:
             count = int(sys.argv[1])
-            words = lc_select(count)
+            words = line_cache(count)
 
             for word in words:
                 print(word, end=' ')
@@ -92,4 +92,4 @@ def compare() :
             print()
 
 if __name__ == '__main__':
-    
+    compare()

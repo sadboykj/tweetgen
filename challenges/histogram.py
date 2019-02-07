@@ -19,23 +19,46 @@ def load(text):
 
     """
     Loads file as list of words
+    Pulls all punctuation
     """
+    file  = open(text)
+    # Converts file to string of lower case words
+    words = file.read().lower()
+    # Replaces punctuation with nothing
+    words = words.translate(str.maketrans('','', string.punctuation))
+
+    # Creates list of words from string
+    wordlist = [word for word in words.split()]
+    """ equivalent to: """
     # wordlist = []
     # file = open(text)
-    # for word in f.read().split():
+    # for word in file.read().split():
     #     wordlist.append(word)
-    """ equivalent to: """
-    file  = open(text)
-    words = [word for word in file.read().split()]
 
     file.close()
-    return words
+    return wordlist
+
+# Function below works for text not for files
+#
+# def remove_punctuation(text):
+#     """
+#     Iterates through text
+#     Adds everything but punctuation to result
+#     """
+#     result = ""
+#     for char in text:
+#         if char not in string.punctuation:
+#             print(char)
+#             result += char
+    
+#     return result
+
 
 # Dictionary Implementation
 def histogram(text):
     """
     Histogram() function:
-    - Takes a source_text argument
+    - Takes a source text argument
     - Stores each unique word
         - along with the number of times the word appears in the source text.
     - Returns a histogram data structure 
@@ -87,7 +110,38 @@ def frequency(word, histogram):
     else:
         return "Word not found"
 
+# # List Implementation
+# def listogram(text):
+#     """
+#     Histogram() function:
+#     - Takes a source text argument
+#     - Stores each unique word
+#         - along with the number of times the word appears in the source text.
+#     - Returns a histogram data structure 
+#     """
+#     # STRETCH: timing function
+#     start = time.time()
 
+#     listogram = {}
+
+#     # Loads a source text argument
+#     # Creates list of words
+#     words = load(text)
+
+#     # stores each unique word in histogram
+#     for word in words:
+#         if word in histogram:
+#             histogram[word] += 1
+#         else:
+#             histogram[word] = 1
+
+#     # STRETCH: timing function
+#     end      = time.time()
+#     duration = end - start
+#     print("List Implementation: " + str(duration))
+
+#     # Returns a histogram list data structure
+#     return listogram
 
 
 
@@ -109,5 +163,5 @@ if __name__ == '__main__':
     # print(wordlist)
     # print(wordfrequency(wordlist, text))
     file = sys.argv[1]
-    my_dict = histogram(file)
-    print(my_dict)
+    hist = histogram(file)
+    print(hist)
