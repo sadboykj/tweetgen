@@ -38,8 +38,9 @@ def load(text):
     file.close()
     return wordlist
 
-# Function below works for text not for files
-#
+# Remove Punctuation Function
+# works for text not for files
+
 # def remove_punctuation(text):
 #     """
 #     Iterates through text
@@ -110,14 +111,14 @@ def frequency(word, histogram):
     else:
         return "Word not found"
 
-# # List Implementation
+# List Implementation
 # def listogram(text):
 #     """
-#     Histogram() function:
+#     Listogram() function:
 #     - Takes a source text argument
 #     - Stores each unique word
 #         - along with the number of times the word appears in the source text.
-#     - Returns a histogram data structure 
+#     - Returns a histogram list data structure 
 #     """
 #     # STRETCH: timing function
 #     start = time.time()
@@ -128,7 +129,7 @@ def frequency(word, histogram):
 #     # Creates list of words
 #     words = load(text)
 
-#     # stores each unique word in histogram
+#     # stores each unique word in listogram
 #     for word in words:
 #         if word in histogram:
 #             histogram[word] += 1
@@ -143,25 +144,19 @@ def frequency(word, histogram):
 #     # Returns a histogram list data structure
 #     return listogram
 
+# for w in wl:
+#     count = 0
+#     print(w)
 
-
-    # for w in wl:
-    #     count = 0
-    #     print(w)
-
-    # for w in ws:
-    #     if(w == wl):
-    #         count += 1
-    #         print(w, count)
-    #         # print(couple)
-
-# dictOfWords = { i : listOfStr[i] for i in range(0, len(listOfStr) ) }
+# for w in ws:
+#     if(w == wl):
+#         count += 1
+#         print(w, count)
+#         # print(couple)
 
 
 if __name__ == '__main__':
 
-    # print(wordlist)
-    # print(wordfrequency(wordlist, text))
     file = sys.argv[1]
     hist = histogram(file)
     print(hist)
