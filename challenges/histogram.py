@@ -65,7 +65,7 @@ def histogram(text):
     - Returns a histogram data structure 
     """
     # STRETCH: timing function
-    start = time.time()
+    # start = time.time()
 
     histogram = {}
 
@@ -75,15 +75,20 @@ def histogram(text):
 
     # stores each unique word in histogram
     for word in words:
+        
         if word in histogram:
             histogram[word] += 1
         else:
             histogram[word] = 1
 
+    if None in histogram:
+        del histogram[None]
+
+
     # STRETCH: timing function
-    end      = time.time()
-    duration = end - start
-    print("Dictionary Implementation: " + str(duration))
+    # end      = time.time()
+    # duration = end - start
+    # print("Dictionary Implementation: " + str(duration))
 
     # Returns a histogram dictionary data structure
     return histogram
@@ -93,7 +98,6 @@ def unique_words(histogram):
     - Takes a histogram argument
     - Returns total count (integer) of unique words
     """
-
     # Takes a histogram argument
     # Returns total count of unique words
     return len(histogram)
@@ -103,7 +107,6 @@ def frequency(word, histogram):
     - Takes a word and histogram argument
     - Returns the number of times word appears in text
     """
-
     # Checks if word is in histogram
     if word in histogram:
         # Returns dictionary value
@@ -111,7 +114,7 @@ def frequency(word, histogram):
     else:
         return "Word not found"
 
-# List Implementation
+# List Implementation - WORKING ON IT
 # def listogram(text):
 #     """
 #     Listogram() function:
@@ -159,4 +162,6 @@ if __name__ == '__main__':
 
     file = sys.argv[1]
     hist = histogram(file)
+    
+    # print(frequency("fish", hist))
     print(hist)
