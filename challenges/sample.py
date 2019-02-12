@@ -12,74 +12,65 @@ Stochastic sampling
 def sample(text):
     
     # converts text to histogram
-    words = histogram(text)
-    # print(words)
+    histo = histogram(text)
+    # print("histogram: ")
+    # print(histogram)
 
-    # returns length of histogram
-    count = len(words) - 1
-    # print(count)
+    # returns number of tokens in histogram
+    tokens = 0
+    for word in histo:
+        tokens += histo[word]
+    # print("tokens: ")
+    # print(tokens)
     
     # cumulative_probability
     cum_prob = 0
 
     # random number
-    ranum = random.uniform(0, count)
+    ranum = random.uniform(0, 1)
+    # print("random number: ")
+    # print(ranum)
 
     # randomly picks one word based on word frequency
-    for word in words:
-        cum_prob += (float(words[word]) / float(count))
+    for word in histo:
+        cum_prob += (float(histo[word]) / float(tokens))
+        # print("cumulative prob: ")
+        # print(cum_prob)
         if cum_prob >= ranum:
             return word
 
-
-# def sample(histogram):
-#     total_sum = 0
-#     cumulative_prob = 0.0
-
-#     for item in histogram:
-#         total_sum += item[1]
-
-#     random_num = random.uniform(0, 1)
-#     for value in histogram:
-#         cumulative_prob += float(value[1]) / float(total_sum)
-#         if cumulative_prob >= random_num:
-#             return value[0]
-
 def test(text):
 
-    words = dict()
+    histo = dict()
 
-    for i in range(0, 10):
+    for i in range(0, 10000):
         
         word = sample(text)
-        print(word)
 
         # for parsing through keys
         # if word in words.keys()
-        if word in words:
-            words[word] += 1
+        if word in histo:
+            histo[word] += 1
         else:
-            words[word] = 1
+            histo[word] = 1
 
-    print(words)
+    return histo
 
-
+def create_sentence(text):
+    
+    newSentenceArray = []
+    for _ in range(random.randint(10, 30)):
+        newSentenceArray.append(word_selection(histogram))
+    return " ".join(newSentenceArray) + "."
 
 if __name__ == '__main__':
     
     file   = sys.argv[1]
     result = sample(file)
-    test = test(file)
+    test   = test(file)
 
-    print(result)
+    print(test)
     
-
-
-# def create_sentence(histogram):
-#     newSentenceArray = []
-#     for _ in range(random.randint(10, 30)):
-#         newSentenceArray.append(word_selection(histogram))
-#     return " ".join(newSentenceArray) + "."
 
 # def create_probability_dict(histogram, loop=10000):
 #     prob_dict = {}

@@ -26,6 +26,8 @@ def load(text):
     words = file.read().lower()
     # Replaces punctuation with nothing
     words = words.translate(str.maketrans('','', string.punctuation))
+    # Replaces numbers with nothing
+    words = words.translate(str.maketrans('','', string.digits))
 
     # Creates list of words from string
     wordlist = [word for word in words.split()]
