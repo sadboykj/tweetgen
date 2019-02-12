@@ -74,7 +74,12 @@ def sentence(text):
             result += str(word)
             length += len(word)
     
-    return result.capitalize() + "."
+    # takes out beginning space character from line 73
+    # capitilizes new first letter
+    # adds period to the end
+    result = result[1:].capitalize() + "."
+
+    return result
 
     
     # for _ in range(random.randint(10, 30)):
