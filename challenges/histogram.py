@@ -27,7 +27,7 @@ def load(text):
     # Replaces punctuation with nothing
     words = words.translate(str.maketrans('','', string.punctuation))
     # Replaces numbers with nothing
-    words = words.translate(str.maketrans('','', string.digits))
+    # words = words.translate(str.maketrans('','', string.digits))
 
     # Creates list of words from string
     wordlist = [word for word in words.split()]
@@ -82,10 +82,6 @@ def histogram(text):
             histogram[word] += 1
         else:
             histogram[word] = 1
-
-    if None in histogram:
-        del histogram[None]
-
 
     # STRETCH: timing function
     # end      = time.time()

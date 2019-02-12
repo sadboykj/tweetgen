@@ -40,10 +40,14 @@ def sample(text):
             return word
 
 def test(text):
+# def test(text, iterations):
 
     histo = dict()
 
-    for i in range(0, 10000):
+    # if iterations is None:
+    #     iterations = 500
+
+    for i in range(0, 50):
         
         word = sample(text)
 
@@ -56,29 +60,33 @@ def test(text):
 
     return histo
 
-def create_sentence(text):
+def sentence(text):
+
+    histo  = test(text)
+
+    result = ""
+
+    length = 0
+
+    while length < 140:
+        for word in histo:
+            result += " "
+            result += str(word)
+            length += len(word)
     
-    newSentenceArray = []
-    for _ in range(random.randint(10, 30)):
-        newSentenceArray.append(word_selection(histogram))
-    return " ".join(newSentenceArray) + "."
+    return result.capitalize() + "."
+
+    
+    # for _ in range(random.randint(10, 30)):
+    #     newSentenceArray.append(word_selection(histogram))
+    # return " ".join(newSentenceArray) + "."
 
 if __name__ == '__main__':
     
-    file   = sys.argv[1]
-    result = sample(file)
-    test   = test(file)
+    file     = sys.argv[1]
+    # result   = sample(file)
+    # test     = test(file)
+    sentence = sentence(file)
 
-    print(test)
+    print(sentence)
     
-
-# def create_probability_dict(histogram, loop=10000):
-#     prob_dict = {}
-
-#     for item in histogram:
-#         prob_dict[item[0]] = 0
-
-#     for _ in range(0, loop):
-#         prob_dict[word_selection(histogram)] += 1
-
-#     return prob_dict
