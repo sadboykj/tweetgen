@@ -21,6 +21,26 @@ class Listogram(list):
         """Increase frequency count of given word by given count amount."""
         # TODO: Increase word frequency by count
 
+        # adds count to total token amount
+        self.tokens += count
+
+        """
+        iterates through Listogram
+        checks if word is in list
+        then increases frequency
+        
+        if it isnt in lists
+        it adds a new word type
+        then adds the word to the list
+        """
+        # for list 
+        # if word in self:
+        #     self[word] += count
+        # else:
+        #     self.types += 1
+        #     self[word] = count
+
+
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
         # TODO: Retrieve word frequency count
