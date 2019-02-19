@@ -1,3 +1,5 @@
+#!python3
+
 import random, sys, re, string
 from histogram import load, histogram
 
@@ -80,11 +82,6 @@ def sentence(text):
     result = result[1:].capitalize() + "."
 
     return result
-
-    
-    # for _ in range(random.randint(10, 30)):
-    #     newSentenceArray.append(word_selection(histogram))
-    # return " ".join(newSentenceArray) + "."
 
 if __name__ == '__main__':
     
