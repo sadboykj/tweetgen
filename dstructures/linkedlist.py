@@ -19,6 +19,7 @@ class LinkedList(object):
         """Initialize this linked list and append the given items, if any."""
         self.head = None  # First node
         self.tail = None  # Last node
+        self.size = 0
         # Append given items
         if items is not None:
             for item in items:
@@ -56,6 +57,7 @@ class LinkedList(object):
         """Return the length of this linked list by traversing its nodes.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes and count one for each
+        return self.size
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
@@ -63,6 +65,7 @@ class LinkedList(object):
         # TODO: Create new node to hold given item
         # TODO: Append node after tail, if it exists
         new = Node(item)
+        self.size += 1
 
         if self.is_empty():
             self.head = new
@@ -78,7 +81,9 @@ class LinkedList(object):
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Create new node to hold given item
         # TODO: Prepend node before head, if it exists
+
         new = Node(item)
+        self.size += 1
 
         if self.is_empty():
             self.head = new
@@ -95,6 +100,15 @@ class LinkedList(object):
         TODO: Worst case running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes to find item where quality(item) is True
         # TODO: Check if node's data satisfies given quality function
+        current = self.head
+        
+        while current != None:
+            if quality(current.data):
+                return current.data
+            current = current.next
+
+        return None
+
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
@@ -119,6 +133,8 @@ def test_linked_list():
     print('head: {}'.format(ll.head))
     print('tail: {}'.format(ll.tail))
     print('length: {}'.format(ll.length()))
+
+    ll.find('A')
 
     # Enable this after implementing delete method
     delete_implemented = False

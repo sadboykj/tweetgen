@@ -55,11 +55,20 @@ class HashTable(object):
         # TODO: Loop through all buckets
         # TODO: Count number of key-value entries in each bucket
 
+
     def contains(self, key):
         """Return True if this hash table contains the given key, or False.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Find bucket where given key belongs
+        index = self._bucket_index(key)
+        bucket = self.buckets[index]
         # TODO: Check if key-value entry exists in bucket
+        entry = bucket.find(lambda key_value: key_value[0] == key)
+        # if entry is None:
+        #     return False
+        # else:
+        #     return True
+        return entry is not None
 
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
@@ -73,10 +82,16 @@ class HashTable(object):
     def set(self, key, value):
         """Insert or update the given key with its associated value.
         TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Find bucket where given key belongs
+        # Find bucket where given key belongs
+        index  = self._bucket_index(key)
+        bucket = self.buckets[index]
         # TODO: Check if key-value entry exists in bucket
+
         # TODO: If found, update value associated with given key
-        # TODO: Otherwise, insert given key-value entry into bucket
+        # Otherwise, insert given key-value entry into bucket
+        entry = (key, value)
+        bucket.append(entry)
+        
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
