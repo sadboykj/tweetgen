@@ -73,10 +73,10 @@ def histogram(text):
 
     # Loads a source text argument
     # Creates list of words
-    words = load(text)
+    wordlist = load(text)
 
     # stores each unique word in histogram
-    for word in words:
+    for word in wordlist:
         
         if word in histogram:
             histogram[word] += 1
@@ -112,54 +112,49 @@ def frequency(word, histogram):
     else:
         return "Word not found"
 
-# List Implementation - WORKING ON IT
-# def listogram(text):
-#     """
-#     Listogram() function:
-#     - Takes a source text argument
-#     - Stores each unique word
-#         - along with the number of times the word appears in the source text.
-#     - Returns a histogram list data structure 
-#     """
-#     # STRETCH: timing function
-#     start = time.time()
+def listogram(text):
+    """
+    Listogram() function:
+    - Takes a source text argument
+    - Stores each unique word
+        - along with the number of times the word appears in the source text.
+    - Returns a histogram list data structure 
+    """
+    # STRETCH: timing function
+    # start = time.time()
 
-#     listogram = {}
+    listogram = []
 
-#     # Loads a source text argument
-#     # Creates list of words
-#     words = load(text)
+    # Loads a source text argument
+    # Creates list of words
+    wordlist = load(text)
 
-#     # stores each unique word in listogram
-#     for word in words:
-#         if word in histogram:
-#             histogram[word] += 1
-#         else:
-#             histogram[word] = 1
+    # stores each unique word in listogram
+    for word in range(0, len(wordlist)):
+        # print(word)
+        # print(wordlist[word])
+        if len(listogram) == 0:
+            listogram.append([wordlist[word], 1])
+        else:
+            if wordlist[word] not in listogram:
+                listogram.append([wordlist[word], 1])
+            else:
+                listogram[i][1] += 1
 
-#     # STRETCH: timing function
-#     end      = time.time()
-#     duration = end - start
-#     print("List Implementation: " + str(duration))
+    # STRETCH: timing function
+    # end      = time.time()
+    # duration = end - start
+    # print("List Implementation: " + str(duration))
 
-#     # Returns a histogram list data structure
-#     return listogram
-
-# for w in wl:
-#     count = 0
-#     print(w)
-
-# for w in ws:
-#     if(w == wl):
-#         count += 1
-#         print(w, count)
-#         # print(couple)
+    # Returns a histogram list data structure
+    return listogram
 
 
 if __name__ == '__main__':
 
     file = sys.argv[1]
-    hist = histogram(file)
+    # hist = histogram(file)
+    hist = listogram(file)
     
     # print(frequency("fish", hist))
     print(hist)
