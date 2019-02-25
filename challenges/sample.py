@@ -1,7 +1,7 @@
 #!python3
 
 import random, sys, re, string
-from histogram import load, histogram
+from histogram import load, histogram, unique_words
 
 """
 GOAL: To pull words out of the histogram to produce sentences
@@ -19,9 +19,10 @@ def sample(text):
     # print(histogram)
 
     # returns number of tokens in histogram
-    tokens = 0
-    for word in histo:
-        tokens += histo[word]
+    # tokens = 0
+    # for word in histo:
+    #     tokens += histo[word]
+    tokens = unique_words(histo)
     # print("tokens: ")
     # print(tokens)
     
@@ -82,6 +83,7 @@ def sentence(text):
     result = result[1:].capitalize() + "."
 
     return result
+
 
 if __name__ == '__main__':
     
