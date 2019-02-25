@@ -112,6 +112,18 @@ def frequency(word, histogram):
     else:
         return "Word not found"
 
+def list_frequency(word, listogram):
+    """
+    - Takes a word and listogram argument
+    - Returns the number of times word appears in text
+    """
+    # Checks if word is in histogram
+    for item in listogram:
+        if item[0] == word:
+            return item[1]
+    else:
+        return "Word not found"
+
 def listogram(text):
     """
     Listogram() function:
@@ -129,22 +141,45 @@ def listogram(text):
     # Creates list of words
     wordlist = load(text)
 
+    # ATTEMPT 1
+
+    # for i in range(0, len(wordlist)):
+    #     # print(word)
+    #     # print(wordlist[word])
+    #     if len(listogram) == 0:
+    #         listogram.append([wordlist[i], 1])
+    #     else:
+    #         if wordlist[i] not in listogram:
+    #             listogram.append([wordlist[word], 1])
+    #         else:
+    #             listogram[i][1] += 1
+
+    # ATTEMPT 2
     # stores each unique word in listogram
-    for word in range(0, len(wordlist)):
-        # print(word)
-        # print(wordlist[word])
+    for word in wordlist:
+
         if len(listogram) == 0:
-            listogram.append([wordlist[word], 1])
+            listogram.append([word, 1])
+
         else:
-            if wordlist[word] not in listogram:
-                listogram.append([wordlist[word], 1])
-            else:
-                listogram[i][1] += 1
+            found = False
+
+            for item in listogram:
+                if item[0] == word:
+                    item[1] += 1
+                    found = True
+        
+            if not found:
+                listogram.append([word, 1])
+
 
     # STRETCH: timing function
     # end      = time.time()
     # duration = end - start
     # print("List Implementation: " + str(duration))
+
+    # Sorted listogram by frequency
+    listogram.sort(key=lambda x: x[1], reverse=True)
 
     # Returns a histogram list data structure
     return listogram
@@ -153,7 +188,11 @@ def listogram(text):
 if __name__ == '__main__':
 
     file = sys.argv[1]
+
+    # TEST HISTOGRAM
     # hist = histogram(file)
+
+    # TEST LISTOGRAM
     hist = listogram(file)
     
     # print(frequency("fish", hist))
