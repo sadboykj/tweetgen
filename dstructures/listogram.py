@@ -1,7 +1,7 @@
-#!python
+#!python3
+# pip3 install --user pytest
 
 from __future__ import division, print_function  # Python 2 and 3 compatibility
-
 
 class Listogram(list):
     """Listogram is a histogram implemented as a subclass of the list type."""
@@ -19,8 +19,6 @@ class Listogram(list):
 
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
-        # TODO: Increase word frequency by count
-
         # adds count to total token amount
         self.tokens += count
 
@@ -33,6 +31,21 @@ class Listogram(list):
         it adds a new word type
         then adds the word to the list
         """
+
+        # ATTEMPT #2
+
+        for item in self:
+            if item[0] == word:
+                item[1] += count
+            else:
+                self.types += 1
+                self.append([word, count])
+                print([word,count])
+        
+        return
+
+        # ATTEMPT #1
+
         # for list 
         # if word in self:
         #     self[word] += count
@@ -40,20 +53,44 @@ class Listogram(list):
         #     self.types += 1
         #     self[word] = count
 
-
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
-        # TODO: Retrieve word frequency count
+        for item in self:
+            # Retrieve word frequency count
+            if item[0] == word:
+                return item[1]
+            else:
+                return 0
+
 
     def __contains__(self, word):
         """Return boolean indicating if given word is in this histogram."""
-        # TODO: Check if word is in this histogram
+        for item in self:
+            # Check if word is in this histogram
+            if item[0] == word:
+                return True
+            else:
+                return False
 
     def _index(self, target):
         """Return the index of entry containing given target word if found in
         this histogram, or None if target word is not found."""
-        # TODO: Implement linear search to find index of entry with target word
+        # ATTEMPT #2
+        # utilizing enumerate
+        for index, item in enumerate(self):
+            if item[0] == target:
+                return index
 
+        return None
+
+        # ATTEMPT #1
+        # Implement linear search to find index of entry with target word
+        # index = 0
+        # for item in self:
+        #     if target == item[0]:
+        #         return index
+        #     index += 1
+        # return None
 
 def print_histogram(word_list):
     print('word list: {}'.format(word_list))
