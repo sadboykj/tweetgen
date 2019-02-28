@@ -6,7 +6,6 @@ from linkedlist import LinkedList
 class HashTable(object):
 
     def __init__(self, init_size=8):
-        """Initialize this hash table with the given initial size."""
         # Create a new list (used as fixed-size array) of empty linked lists
         self.buckets = [LinkedList() for _ in range(init_size)]
         self.size    = 0
@@ -26,8 +25,8 @@ class HashTable(object):
         return hash(key) % len(self.buckets)
 
     def keys(self):
-        """Return a list of all keys in this hash table.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        """Return a list of all keys in this hash table."""
+        """Running time: O(n^n) double for loop iterates through bucket values"""
         # Collect all keys in each bucket
         all_keys = []
         for bucket in self.buckets:
@@ -36,8 +35,8 @@ class HashTable(object):
         return all_keys
 
     def values(self):
-        """Return a list of all values in this hash table.
-        Running time: O(n^n) double for loop"""
+        """Return a list of all values in this hash table."""
+        """Running time: O(n^n) double for loop iterates through bucket values"""
         # Modeled after keys function
         all_values = []
         # Loop through all buckets
@@ -49,8 +48,8 @@ class HashTable(object):
         return all_values
 
     def items(self):
-        """Return a list of all items (key-value pairs) in this hash table.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        """Return a list of all items (key-value pairs) in this hash table."""
+        """Running time: O(n) for loop iterates through buckets"""
         # Collect all pairs of key-value entries in each bucket
         all_items = []
         for bucket in self.buckets:
@@ -58,25 +57,19 @@ class HashTable(object):
         return all_items
 
     def length(self):
-        """Return the number of key-value entries by traversing its buckets.
-        TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Loop through all buckets
-        # TODO: Count number of key-value entries in each bucket
-
-
+        """Return the number of key-value entries by traversing its buckets."""
+        """Running time: O(1) returns size attribute"""
+        return self.size
+        
     def contains(self, key):
-        """Return True if this hash table contains the given key, or False.
-        TODO: Running time: O(???) Why and under what conditions?"""
-        # TODO: Find bucket where given key belongs
+        """Return True if this hash table contains the given key, or False."""
+        """Running time: O(n) used find method"""
+        # Get bucket where given key belongs
         index = self._bucket_index(key)
         bucket = self.buckets[index]
-        # TODO: Check if key-value entry exists in bucket
-        entry = bucket.find(lambda key_value: key_value[0] == key)
-        # if entry is None:
-        #     return False
-        # else:
-        #     return True
-        return entry is not None
+        # Returns boolean of if key-value entry exists in bucket
+        return bucket.find(lambda key_value: key_value[0] == key) is not None
+        
 
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
