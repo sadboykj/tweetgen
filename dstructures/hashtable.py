@@ -75,12 +75,13 @@ class HashTable(object):
         """Return the value associated with the given key, or raise KeyError."""
         """Running time: O(n) used find method"""
         # Find bucket where given key belongs
-        bucket = self.buckets[self._bucket_index(key)]
+        index = self._bucket_index(key)
+        bucket = self.buckets[index]
         # Check if key-value entry exists in bucket
-        entry = bucket.find(lambda key_value: key_value[0] == key)
+        value = bucket.find(lambda key_value: key_value[0] == key)
         # If found, return value associated with given key
-        if entry is not None:
-            return entry[1]
+        if value is not None:
+            return value[1]
         else:
             raise KeyError('Key not found {}'.format(key))
 
@@ -105,7 +106,19 @@ class HashTable(object):
         #     bucket.replace(value, (key, value))
 
         # ATTEMPT #2
-        
+
+        # Find bucket where given key belongs
+        index = self._bucket_index(key)
+        bucket = self.buckets[index]
+        item  = bucket.find(lambda key_value: key_value[0] == key)
+        # Check if key-value entry exists in bucket
+        if item is not None:
+            # If found, update value associated with given key
+            bucket.replace(item, (key, value))
+        else:
+            # If not found, insert given key-value entry into bucket
+            bucket.append((key, value))
+            self.size += 1
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError."""

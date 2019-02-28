@@ -1,4 +1,3 @@
-#!python
 
 from hashtable import HashTable
 import unittest
