@@ -10,6 +10,8 @@ def markov(text):
     for key, value in histo.items():
         print(key, value)
 
+    # dictionary in dictionary
+
     # see which word comes after start
     # check if word is in next list
     # add (word, +1) to next list as value
