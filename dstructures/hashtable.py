@@ -1,6 +1,6 @@
 #!python
 
-from linkedlist import LinkedList
+from linkedlist import *
 
 
 class HashTable(object):
@@ -109,15 +109,15 @@ class HashTable(object):
 
         # Find bucket where given key belongs
         index = self._bucket_index(key)
-        bucket = self.buckets[index]
-        item  = bucket.find(lambda key_value: key_value[0] == key)
+        buck = self.buckets[index]
+        found_item  = buck.find(lambda entry: entry[0] == key)
         # Check if key-value entry exists in bucket
-        if item is not None:
+        if found_item is not None:
             # If found, update value associated with given key
-            bucket.replace(item, (key, value))
+            buck.replace(found_item, (key, value))
         else:
             # If not found, insert given key-value entry into bucket
-            bucket.append((key, value))
+            buck.append((key, value))
             self.size += 1
 
     def delete(self, key):

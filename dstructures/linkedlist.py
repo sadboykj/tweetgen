@@ -94,6 +94,16 @@ class LinkedList(object):
             new.next = self.head
             self.head = new
 
+    def replace(self, old, new):
+        head = self.head
+        while head is not None:
+            if head.data == old:
+                head.data = new
+                return True
+            else:
+                head = head.next
+        return 'Item not in linked list: {}'.format(old)
+
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality.
