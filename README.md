@@ -1,3 +1,6 @@
 ##Tweet Generator
 
-Currently working to finish my Markov Chain using linked list and hashtable data structures.
+To run tweet gen simply:
+    clone repo
+    then in terminal run:
+        python3 markov_chain.py
