@@ -1,10 +1,9 @@
 from flask import Flask
-# from sample import sample, test, sentence
-# import shortext.txt
+from markov_chain import *
 
 app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    text = "Hello World!"
+    text = main()
     return text
